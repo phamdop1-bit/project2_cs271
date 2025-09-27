@@ -1,5 +1,5 @@
-#ifndef MINQUEUE_H
-#define MINQUEUE_H
+//#ifndef MINQUEUE_H
+//#define MINQUEUE_H
 
 #include <string>
 #include <sstream>
@@ -17,7 +17,7 @@ private:
     
 public:
     // Constructors
-    MinQueue();
+    MinQueue(void);
     MinQueue(T* A, int n);
     
     // Destructor

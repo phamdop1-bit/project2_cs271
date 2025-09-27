@@ -1,5 +1,9 @@
+#ifndef MINQUEUE_CPP
+#define MINQUEUE_CPP
+
 #include <string>
 #include <sstream>
+#include "minqueue.h"
 
 using namespace std;
 
@@ -84,3 +88,5 @@ template <class T>
     void MinQueue<T>::allocate(int n){
 
 }
+
+#endif
