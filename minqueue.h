@@ -44,6 +44,8 @@ public:
     void allocate(int n);
     int size() { return heap_size; }
     bool empty() { return heap_size == 0; }
+    void clear(void);
+
 };
 
-#endif
+//#endif
