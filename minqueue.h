@@ -25,7 +25,7 @@ public:
     
     // Copy constructor and assignment operator
     MinQueue(const MinQueue& other);
-    MinQueue<T> operator=(const MinQueue& other);
+    MinQueue<T>& operator=(const MinQueue& other);
     
     // Priority Queue operations
     void insert(T x);

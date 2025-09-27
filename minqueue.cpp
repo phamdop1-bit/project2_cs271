@@ -31,7 +31,7 @@ template <class T>
 }
 
 template <class T>
-    MinQueue<T> MinQueue<T>::operator=(const MinQueue& other){
+    MinQueue<T>& MinQueue<T>::operator=(const MinQueue& other){
 
 }
 
