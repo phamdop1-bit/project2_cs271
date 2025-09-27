@@ -8,31 +8,46 @@
 using namespace std;
 
 // Constructors
-
+/*
+Pre-Conditions: The funciton is called
+Post_Conditions: a empty MinQueue is made
+*/
 template <class T>
     MinQueue<T>::MinQueue(void){
-
+        heapsize = 0;
+        capasity = 0;
+        heap = new T[capasity];
 }
 template <class T>
     MinQueue<T>::MinQueue(T* A, int n){
+        heapsize = n;
+        capasity = n;
+        head = new T[capasity];
+        for(int i=0; i<heapsize; i++){
+            heap[i] = A[i];
+        }
 
 }
 
 // Destructor
 template <class T>
     MinQueue<T>::~MinQueue(){
-
+        clear();
 }
 
 // Copy constructor and assignment operator
 template <class T>
     MinQueue<T>::MinQueue(const MinQueue& other){
-
+        heapsize = 0;
+        capasity = 0;
+        heap = new T[capasity];
+        DeepCopy(other);
 }
 
 template <class T>
     MinQueue<T>& MinQueue<T>::operator=(const MinQueue& other){
-
+        DeepCopy(other);
+        return *this;
 }
 
 // Priority Queue operations
@@ -88,5 +103,28 @@ template <class T>
     void MinQueue<T>::allocate(int n){
 
 }
+
+//healper funciton
+template <class T>
+    void MinQueue<T>::clear(void){
+        T *current = head;
+        delete current;
+        head = NULL;
+        capasity = 0;
+        size = 0;
+}
+
+template <class T>
+    void MinQueue<T>::DeepCopy(const MinQueue& other){
+	    clear();
+        capasity = other.capasity;
+        heapsize = other.heapsize;
+        heap = new T[capasity];
+        for(int i=0; i<heapsize; i++){
+            heap[i] = other.heap[i];
+        }
+}
+
+
 
 #endif
