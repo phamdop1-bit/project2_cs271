@@ -119,13 +119,6 @@ void MinQueue<T>::decrease_key(int i, T k) {
 
 // Heap operations
 template <class T>
-    void MinQueue<T>::min_heapify(int i){
-
-}
-
-// Precondition: heap contains heap_size elements
-// Postcondition: heap satisfies min-heap property
-template <class T>
 void MinQueue<T>::min_heapify(int i) {
     int l = left(i);
     int r = right(i);
@@ -140,6 +133,16 @@ void MinQueue<T>::min_heapify(int i) {
     if (smallest != i) {
         std::swap(heap[i], heap[smallest]);
         min_heapify(smallest);
+    }
+}
+
+// Precondition: heap contains heap_size elements
+// Postcondition: heap satisfies min-heap property
+template <class T>
+    void MinQueue<T>::build_heap(){
+
+		for (int i = (heap_size - 1) / 2; i >= 0; i--) {
+        min_heapify(i);
     }
 }
 
