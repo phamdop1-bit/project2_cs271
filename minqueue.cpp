@@ -18,6 +18,10 @@ template <class T>
         capasity = 0;
         heap = new T[capasity];
 }
+/*
+Pre-Conditions: A is an array
+Post_Conditions: this min-queue is equivalent to A
+*/
 template <class T>
     MinQueue<T>::MinQueue(T* A, int n){
         heapsize = n;
@@ -26,16 +30,24 @@ template <class T>
         for(int i=0; i<heapsize; i++){
             heap[i] = A[i];
         }
-
+        build_heap()
 }
 
 // Destructor
+/*
+Pre-Conditions: None
+Post_Conditions: Dealocates all memory of the queue
+*/
 template <class T>
     MinQueue<T>::~MinQueue(){
         clear();
 }
 
 // Copy constructor and assignment operator
+/*
+Pre-Conditions: other is a sorted MinQueue
+Post_Conditions: this min-queue is equivalent to other
+*/
 template <class T>
     MinQueue<T>::MinQueue(const MinQueue& other){
         heapsize = 0;
@@ -44,6 +56,10 @@ template <class T>
         DeepCopy(other);
 }
 
+/*
+Pre-Conditions: other is a sorted MinQueue
+Post_Conditions: this min-queue is equivalent to other
+*/
 template <class T>
     MinQueue<T>& MinQueue<T>::operator=(const MinQueue& other){
         DeepCopy(other);
@@ -118,6 +134,17 @@ void MinQueue<T>::decrease_key(int i, T k) {
 
 
 // Heap operations
+// Precondition: heap contains heap_size elements
+// Postcondition: heap satisfies min-heap property
+template <class T>
+void MinQueue<T>::build_heap(){
+	for (int i = (heap_size - 1) / 2; i >= 0; i--) {
+    min_heapify(i);
+    }
+}
+
+// Precondition: heap contains heap_size elements
+// Postcondition: heap satisfies min-heap property
 template <class T>
 void MinQueue<T>::min_heapify(int i) {
     int l = left(i);
@@ -133,16 +160,6 @@ void MinQueue<T>::min_heapify(int i) {
     if (smallest != i) {
         std::swap(heap[i], heap[smallest]);
         min_heapify(smallest);
-    }
-}
-
-// Precondition: heap contains heap_size elements
-// Postcondition: heap satisfies min-heap property
-template <class T>
-    void MinQueue<T>::build_heap(){
-
-		for (int i = (heap_size - 1) / 2; i >= 0; i--) {
-        min_heapify(i);
     }
 }
 
@@ -200,6 +217,10 @@ template <class T>
 }
 
 //healper funciton
+/*
+Pre-Conditions: Wanting to get rid of heap
+Post_Conditions: Dealocates all memory of heap
+*/
 template <class T>
     void MinQueue<T>::clear(void){
         T *current = head;
@@ -209,6 +230,11 @@ template <class T>
         size = 0;
 }
 
+/*
+Pre-Conditions: other is a sorted MinQueue, this heap is defined
+Post_Conditions: this min-queue is equivalent to other
+- specificly it clears the current heap and copies the new one over
+*/
 template <class T>
     void MinQueue<T>::DeepCopy(const MinQueue& other){
 	    clear();
