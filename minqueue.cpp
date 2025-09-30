@@ -67,6 +67,10 @@ template <class T>
 }
 
 // Priority Queue operations
+/*
+Pre-Conditions: heap is a valid min-heap; x is a valid element of type T
+Post-Conditions: x is inserted into the heap, the min-heap property is preserved.
+*/
 template <class T>
 void MinQueue<T>::insert(T x) {
     if (heap_size == capacity) {
@@ -85,6 +89,10 @@ void MinQueue<T>::insert(T x) {
     }
 }
 
+/*
+Pre-Conditions: heap_size > 0 (the min-queue is non-empty)
+Post-Conditions: returns the smallest element in the min-queue, the heap is not modified.
+*/
 template <class T>
 T MinQueue<T>::min() {
     if (heap_size <= 0) {
@@ -94,6 +102,10 @@ T MinQueue<T>::min() {
     return heap[0];
 }
 
+/*
+Pre-Conditions: heap_size > 0 (the min-queue is non-empty)
+Post-Conditions: the smallest element is removed and returned, heap_size is decreased by one, the min-heap property is preserved.
+*/
 template <class T>
 T MinQueue<T>::extract_min() {
     if (heap_size <= 0) {
@@ -113,6 +125,10 @@ T MinQueue<T>::extract_min() {
     return root;
 }
 
+/*
+Pre-Conditions: 0 <= i < heap_size; k < heap[i]
+Post-Conditions: key at index i is decreased to value k, the min-heap property is preserved.
+*/
 template <class T>
 void MinQueue<T>::decrease_key(int i, T k) {
     if (i < 0 || i >= heap_size) {
