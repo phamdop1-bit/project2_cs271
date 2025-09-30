@@ -78,30 +78,66 @@ template <class T>
 
 }
 
+// Precondition: heap contains heap_size elements
+// Postcondition: heap satisfies min-heap property
 template <class T>
     void MinQueue<T>::build_heap(){
-
+		for (int i = (heap_size - 1) / 2; i >= 0; i--) {
+        min_heapify(i);
+    }
 }
 
+// Precondition: A is a valid array with at least heap_size elements
+// Postcondition: A contains the elements of the heap in ascending order
 template <class T>
     void MinQueue<T>::sort(T* A){
-
+	MinQueue<T> temp_heap(*this);
+    
+    for (int i = 0; i < heap_size; i++) {
+        A[i] = temp_heap.extract_min();
+    }
 }
 
 // Utility methods
+// Precondition: None
+// Postcondition: Returns string representation of heap elements separated by spaces
 template <class T>
     std::string MinQueue<T>::to_string(){
-
+    	if (heap_size == 0) {
+        	return "";
+    	}
+    
+    	std::stringstream ss;
+    	for (int i = 0; i < heap_size; i++) {
+        	if (i > 0) ss << " ";
+        	ss << heap[i];
+    	}
+    	return ss.str();
 }
 
+// Precondition: 0 <= i < capacity
+// Postcondition: heap[i] is set to val
 template <class T>
     void MinQueue<T>::set(int i, T val){
-
+	if (i < 0 || i >= capacity) {
+        throw std::out_of_range("Index out of bounds");
+    }
+    heap[i] = val;
 }
 
+// Precondition: n > 0
+// Postcondition: heap capacity is at least n
 template <class T>
     void MinQueue<T>::allocate(int n){
-
+		if (n > capacity) {
+        T* new_heap = new T[n];
+        for (int i = 0; i < heap_size; i++) {
+            new_heap[i] = heap[i];
+        }
+        delete[] heap;
+        heap = new_heap;
+        capacity = n;
+    }
 }
 
 //healper funciton
