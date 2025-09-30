@@ -15,6 +15,7 @@ private:
     int left(int i) { return 2 * i + 1; }
     int right(int i) { return 2 * i + 2; }
     
+    void DeepCopy(const MinQueue& other);
 public:
     // Constructors
     MinQueue(void);
