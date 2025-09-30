@@ -16,6 +16,7 @@ private:
     int right(int i) { return 2 * i + 2; }
     
     void DeepCopy(const MinQueue& other);
+    void clear(void);
 public:
     // Constructors
     MinQueue(void);
@@ -45,7 +46,6 @@ public:
     void allocate(int n);
     int size() { return heap_size; }
     bool empty() { return heap_size == 0; }
-    void clear(void);
 
 };
 
