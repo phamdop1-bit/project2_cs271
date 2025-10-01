@@ -1,17 +1,17 @@
 
-all: main
+make: main, test
 
-main: minqueue.o usecase.o main.o
-	g++ minqueue.o usecase.o test_minqueue.o -o test
+main: main.o
+	g++ -o main.o
 
-main.o: minqueue.o usecase.o test_minqueue.cpp
-	g++ -c test_minqueue.cpp 
+test: test_minqueue.o
+	g++ -o test_minqueue.o
 
-usecase.o: minqueue.o usecase.cpp
-	g++ -c usecase.cpp 
+main.o: main.cpp usecase.cpp minqueue.cpp minqueue.h
+	g++ -c main.cpp
 
-minqueue.o: minqueue.cpp minqueue.h
-	g++ -c minqueue.cpp
+test_minqueue.o: test_minqueue.cpp usecase.cpp minqueue.cpp minqueue.h
+	g++ -c test_minqueue.cpp
 
 clean:
-	rm -f all *.o
+	rm *.o

@@ -240,7 +240,7 @@ Post_Conditions: Dealocates all memory of heap
 template <class T>
     void MinQueue<T>::clear(void){
         T *current = head;
-        delete current;
+        delete[] current;
         head = NULL;
         capasity = 0;
         size = 0;

@@ -1,6 +1,7 @@
 #include "minqueue.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -85,9 +86,26 @@ void test_sliding_window() {
 }
 
 int main() {
+    string line;
+    getline(cin, line);
+    
+    vector<int> items;
+    
+    int spacePos = 0;
+    while(line!=""){
+        spacePos = line.find(" ");
+        if(spacePos != string::npos){
+            string part = line.substr(0,spacePos);
+            items.push_back(stoi(part));
+            line = line.substr(spacePos+1);
+        }else{
+            items.push_back(stoi(line));
+            line = "";
+        }
+    }
 
-    test_sliding_window();
+    int size = items.size();
+    int insertStuff[size];
 
-    cout << "Test Passed" << endl;
     return 0;
 }
