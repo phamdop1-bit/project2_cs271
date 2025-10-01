@@ -19,7 +19,7 @@ template <class T>
         heap = new T[capasity];
 }
 /*
-Pre-Conditions: A is an array
+Pre-Conditions: A is an array and n is the number of elements in the array
 Post_Conditions: this min-queue is equivalent to A
 */
 template <class T>
@@ -155,7 +155,7 @@ void MinQueue<T>::decrease_key(int i, T k) {
 template <class T>
 void MinQueue<T>::build_heap(){
 	for (int i = (heap_size - 1) / 2; i >= 0; i--) {
-    min_heapify(i);
+        min_heapify(i);
     }
 }
 
