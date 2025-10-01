@@ -18,20 +18,72 @@ void test_extract_min(){
 
 }
 
-void test_decrease_key(){
+void test_decrease_key() {
+    cout << "\n--- test_decrease_key ---\n";
+    MinQueue<int> q;
 
+    // Case 1: decrease_key on empty heap
+    q.decrease_key(0, 5);  // should print error
+
+    // Case 2: insert some values
+    q.insert(20);
+    q.insert(15);
+    q.insert(30);
+
+    cout << "Heap before decrease_key: " << q.min() << endl; // should be 15
+
+    // Case 3: valid decrease
+    q.decrease_key(2, 10);  // decrease 30 -> 10
+    cout << "Heap after decrease_key(2,10): " << q.min() << endl; // should be 10
+
+    // Case 4: invalid (increase instead of decrease)
+    q.decrease_key(0, 50);  // should print error
 }
 
-void test_min_heapify(){
+// Test min_heapify edge cases
+void test_min_heapify() {
+    cout << "\n--- test_min_heapify ---\n";
+    MinQueue<int> q;
 
+    int arr[] = {10, 50, 20, 40, 80, 60};
+    for (int i = 0; i < 6; i++) q.insert(arr[i]);
+
+    // force a violation: set root higher
+    q.set(0, 100);
+    q.min_heapify(0);
+    cout << "Min after fixing root=100: " << q.min() << endl; // should restore min
 }
 
-void test_build_heap(){
+// Test build_heap edge cases
+void test_build_heap() {
+    cout << "\n--- test_build_heap ---\n";
 
+    int arr[] = {50, 40, 30, 20, 10};
+    int n = 5;
+
+    MinQueue<int> q(arr, n);
+    q.build_heap();
+
+    cout << "Min after build_heap: " << q.min() << endl; // should be 10
 }
 
-void test_sort(){
+// Test sort edge cases
+void test_sort() {
+    cout << "\n--- test_sort ---\n";
 
+    int arr[] = {9, 4, 7, 1, 3};
+    int n = 5;
+
+    MinQueue<int> q(arr, n);
+    q.build_heap();
+
+    q.sort(arr);  // should sort array in ascending order
+
+    cout << "Array after sort: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 void test_sliding_window(){
