@@ -78,7 +78,7 @@ void test_sliding_window(){
 
 void test_to_string(){
     int nums[] = {9,1,2,6,5,4,3};
-    int len = 10;
+    int len = 7;
     MinQueue<int> numbers(nums,len);
     if(numbers.to_string() != "1 5 2 6 9 4 3"){
         cout << "To_string failed. Expected '1 5 2 6 9 4 3' but got: " << numbers.to_string() << endl;
@@ -100,10 +100,47 @@ void test_to_string(){
 }
 
 void test_size(){
+    int nums1[] = {9,1,2,6,5,4,3};
+    int len = 7;
+    MinQueue<int> numbers1(nums1,len);
+    
+    if(numbers1.size() != 7){
+        cout << "Size failed. Expected 7 but got: " << numbers1.size() << endl;
+        cout << "The elements are: " << numbers1.to_string() << endl;
+    }
+
+    int nums2[] = {0};
+    len = 1;
+    MinQueue<int> numbers2(nums2,len);
+
+    if(numbers2.size() != 1){
+        cout << "Size failed. Expected 1 but got: " << numbers2.size() << endl;
+        cout << "The elements are: " << numbers2.to_string() << endl;
+    }
+    
+    int junk = numbers2.extract_min();
+    if(numbers2.size() != 0){
+        cout << "Size failed. Expected 0 but got: " << numbers2.size() << endl;
+        cout << "The elements are: " << numbers2.to_string() << endl;
+    }
 
 }
 
 void test_empty(){
+    int nums[] = {0};
+    int len = 1;
+    MinQueue<int> numbers(nums,len);
+
+    if(numbers.empty()){
+        cout << "Empty failed. Expected 1 item but was empty" << endl;
+        cout << "The elements are: " << numbers.to_string() << endl;
+    }
+    
+    int junk = numbers.extract_min();
+    if(!(numbers.empty())){
+        cout << "Empty failed. Expected 0 items but had something" << endl;
+        cout << "The elements are: " << numbers.to_string() << endl;
+    }
 
 }
 
