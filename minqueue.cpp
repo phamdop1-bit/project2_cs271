@@ -244,7 +244,11 @@ template <class T>
         delete[] current;
         heap = NULL;
         capacity = 0;
+<<<<<<< HEAD
         heap_size = 0;
+=======
+        size = 0;
+>>>>>>> 33ab3f77c803379e2624366f87c21cce36d2a351
 }
 
 /*
@@ -256,7 +260,11 @@ template <class T>
     void MinQueue<T>::DeepCopy(const MinQueue& other){
 	    clear();
         capacity = other.capacity;
+<<<<<<< HEAD
         heap_size = other.heap_size;
+=======
+        heap_size = other.heapsize;
+>>>>>>> 33ab3f77c803379e2624366f87c21cce36d2a351
         heap = new T[capacity];
         for(int i=0; i<heap_size; i++){
             heap[i] = other.heap[i];
