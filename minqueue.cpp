@@ -3,6 +3,7 @@
 
 #include <string>
 #include <sstream>
+#include <iostream>
 #include "minqueue.h"
 
 using namespace std;
@@ -16,7 +17,7 @@ template <class T>
     MinQueue<T>::MinQueue(void){
         heap_size = 0;
         capasity = 0;
-        heap = new T[capasity];
+        heap = new T[capacity];
 }
 /*
 Pre-Conditions: A is an array and n is the number of elements in the array
@@ -25,8 +26,8 @@ Post_Conditions: this min-queue is equivalent to A
 template <class T>
     MinQueue<T>::MinQueue(T* A, int n){
         heap_size = n;
-        capasity = n;
-        head = new T[capasity];
+        capacity = n;
+        head = new T[capacity];
         for(int i=0; i<heapsize; i++){
             heap[i] = A[i];
         }
@@ -52,7 +53,7 @@ template <class T>
     MinQueue<T>::MinQueue(const MinQueue& other){
         heap_size = 0;
         capasity = 0;
-        heap = new T[capasity];
+        heap = new T[capacity];
         DeepCopy(other);
 }
 
