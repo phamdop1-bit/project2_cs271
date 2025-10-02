@@ -1,5 +1,5 @@
 #include <iostream>
-#include "minqueue.cpp"
+#include "minqueue.h"
 #include "usecase.cpp"
 
 void test_minqueue(){
