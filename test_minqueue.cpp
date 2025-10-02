@@ -1,6 +1,9 @@
 #include <iostream>
+#include <cassert>
 #include "minqueue.h"
 #include "usecase.cpp"
+
+using namespace std;
 
 void test_minqueue(){
     cout << "\n=== Testing MinQueue Constructors ===" << endl;
@@ -31,7 +34,7 @@ void test_minqueue(){
         cout << "PASS" << endl;
     }
 }
-}
+
 
 void test_insert(){
 cout << "\n=== Testing Insert Method ===" << endl;
