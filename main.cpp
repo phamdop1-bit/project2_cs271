@@ -1,7 +1,7 @@
-#include "minqueue.h"
 #include <iostream>
 #include <string>
 #include <vector>
+#include "usecase.cpp"
 
 using namespace std;
 
@@ -42,9 +42,9 @@ int main() {
 
     cin >> windowLen;
 
-    string output = sliding_window(&insert, size, windowLen);
+    string output = sliding_window(insert, size, windowLen);
 
-    cout << "The mins of the window as it slides across are as follows: " << endl << output;
+    cout << "The mins of the window as it slides across are as follows: " << endl << output  << endl;
 
     return 0;
 }
