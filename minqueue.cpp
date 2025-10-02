@@ -14,7 +14,7 @@ Post_Conditions: a empty MinQueue is made
 */
 template <class T>
     MinQueue<T>::MinQueue(void){
-        heapsize = 0;
+        heap_size = 0;
         capasity = 0;
         heap = new T[capasity];
 }
@@ -24,7 +24,7 @@ Post_Conditions: this min-queue is equivalent to A
 */
 template <class T>
     MinQueue<T>::MinQueue(T* A, int n){
-        heapsize = n;
+        heap_size = n;
         capasity = n;
         head = new T[capasity];
         for(int i=0; i<heapsize; i++){
@@ -50,7 +50,7 @@ Post_Conditions: this min-queue is equivalent to other
 */
 template <class T>
     MinQueue<T>::MinQueue(const MinQueue& other){
-        heapsize = 0;
+        heap_size = 0;
         capasity = 0;
         heap = new T[capasity];
         DeepCopy(other);
