@@ -3,19 +3,159 @@
 #include "usecase.cpp"
 
 void test_minqueue(){
-
+    cout << "\n=== Testing MinQueue Constructors ===" << endl;
+    
+    // Test 1: Empty constructor
+    {
+        MinQueue<int> mq;
+        assert(mq.empty() == true);
+        assert(mq.size() == 0);
+        cout << "PASS" << endl;
+    }
+    
+    // Test 2: Array constructor with normal array
+    {
+        int arr[] = {5, 3, 7, 1, 9, 2};
+        MinQueue<int> mq(arr, 6);
+        assert(mq.min() == 1);
+        assert(mq.size() == 6);
+        cout << "PASS" << endl;
+    }
+    
+    // Test 3: Edge case - single element array
+    {
+        int arr[] = {42};
+        MinQueue<int> mq(arr, 1);
+        assert(mq.min() == 42);
+        assert(mq.size() == 1);
+        cout << "PASS" << endl;
+    }
+}
 }
 
 void test_insert(){
-
+cout << "\n=== Testing Insert Method ===" << endl;
+    
+    // Test 1: Normal inserts maintain heap property
+    {
+        MinQueue<int> mq;
+        mq.insert(10);
+        mq.insert(5);
+        mq.insert(15);
+        mq.insert(3);
+        
+        assert(mq.min() == 3);
+        assert(mq.size() == 4);
+        cout << "PASS" << endl;
+    }
+    
+    // Test 2: Edge case - insert into empty heap
+    {
+        MinQueue<int> mq;
+        mq.insert(42);
+        assert(mq.min() == 42);
+        assert(mq.size() == 1);
+        cout << "PASS" << endl;
+    }
+    
+    // Test 3: Boundary - insert duplicates and negatives
+    {
+        MinQueue<int> mq;
+        mq.insert(5);
+        mq.insert(5);
+        mq.insert(-10);
+        mq.insert(-10);
+        
+        assert(mq.min() == -10);
+        assert(mq.size() == 4);
+        cout << "PASS" << endl;
+    }
 }
 
 void test_min(){
-
+    cout << "\n=== Testing Min Method ===" << endl;
+    
+    // Test 1: Normal case - min returns smallest
+    {
+        MinQueue<int> mq;
+        mq.insert(10);
+        mq.insert(5);
+        mq.insert(15);
+        
+        assert(mq.min() == 5);
+        assert(mq.size() == 3);  // Doesn't remove
+        cout << "PASS" << endl;
+    }
+    
+    // Test 2: Edge case - min on single element
+    {
+        MinQueue<int> mq;
+        mq.insert(42);
+        
+        assert(mq.min() == 42);
+        assert(mq.min() == 42);  // Call twice, still there
+        cout << "PASS" << endl;
+    }
+    
+    // Test 3: Boundary - min throws on empty heap
+    {
+        MinQueue<int> mq;
+        bool threw = false;
+        
+        try {
+            mq.min();
+        } catch (const runtime_error&) {
+            threw = true;
+        }
+        
+        assert(threw);
+        cout << "PASS" << endl;
+    }
 }
 
 void test_extract_min(){
-
+    cout << "\n=== Testing Extract Min Method ===" << endl;
+    
+    // Test 1: Normal case - extracts in sorted order
+    {
+        MinQueue<int> mq;
+        mq.insert(10);
+        mq.insert(5);
+        mq.insert(15);
+        mq.insert(3);
+        
+        assert(mq.extract_min() == 3);
+        assert(mq.extract_min() == 5);
+        assert(mq.extract_min() == 10);
+        assert(mq.extract_min() == 15);
+        assert(mq.empty());
+        cout << "PASS: Extract min - removes in sorted order" << endl;
+    }
+    
+    // Test 2: Edge case - extract from single element
+    {
+        MinQueue<int> mq;
+        mq.insert(42);
+        
+        assert(mq.extract_min() == 42);
+        assert(mq.empty());
+        cout << "PASS: Extract min - single element" << endl;
+    }
+    
+    // Test 3: Boundary - extract throws on empty heap
+    {
+        MinQueue<int> mq;
+        bool threw = false;
+        
+        try {
+            mq.extract_min();
+        } catch (const runtime_error&) {
+            threw = true;
+        }
+        
+        assert(threw);
+        cout << "PASS: Extract min - throws on empty heap" << endl;
+    }
 }
 
 void test_decrease_key() {
