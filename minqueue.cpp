@@ -16,7 +16,7 @@ Post_Conditions: a empty MinQueue is made
 template <class T>
     MinQueue<T>::MinQueue(void){
         heap_size = 0;
-        capasity = 0;
+        capacity = 0;
         heap = new T[capacity];
 }
 /*
@@ -27,11 +27,11 @@ template <class T>
     MinQueue<T>::MinQueue(T* A, int n){
         heap_size = n;
         capacity = n;
-        head = new T[capacity];
-        for(int i=0; i<heapsize; i++){
+        heap = new T[capacity];
+        for(int i=0; i<heap_size; i++){
             heap[i] = A[i];
         }
-        build_heap()
+        build_heap();
 }
 
 // Destructor
@@ -52,7 +52,7 @@ Post_Conditions: this min-queue is equivalent to other
 template <class T>
     MinQueue<T>::MinQueue(const MinQueue& other){
         heap_size = 0;
-        capasity = 0;
+        capacity = 0;
         heap = new T[capacity];
         DeepCopy(other);
 }
@@ -240,10 +240,10 @@ Post_Conditions: Dealocates all memory of heap
 */
 template <class T>
     void MinQueue<T>::clear(void){
-        T *current = head;
+        T *current = heap;
         delete[] current;
-        head = NULL;
-        capasity = 0;
+        heap = NULL;
+        capacity = 0;
         size = 0;
 }
 
@@ -255,10 +255,10 @@ Post_Conditions: this min-queue is equivalent to other
 template <class T>
     void MinQueue<T>::DeepCopy(const MinQueue& other){
 	    clear();
-        capasity = other.capasity;
-        heapsize = other.heapsize;
-        heap = new T[capasity];
-        for(int i=0; i<heapsize; i++){
+        capacity = other.capacity;
+        heap_size = other.heapsize;
+        heap = new T[capacity];
+        for(int i=0; i<heap_size; i++){
             heap[i] = other.heap[i];
         }
 }
